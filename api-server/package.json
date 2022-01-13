@@ -1,0 +1,15 @@
+{
+  "name": "backendtrs",
+  "version": "1.0.0",
+  "description": "backend for trs egui 3",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suliaman Abass",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2"
+  }
+}
