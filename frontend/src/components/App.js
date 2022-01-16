@@ -3,34 +3,39 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import HomeTable from "./HomeTable";
+import AddEntry from "./AddEntry";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Header from "./Header";
+import Home from "./Home";
+
 const URL = "http://localhost:3001/Home";
 
 const App = () => {
-  const [entries, setEntries] = useState([]);
-  const [dateSelected, setDateSelected] = useState(new Date());
-
-  useEffect(() => {
-    const fetchEntries = async () => {
-      const result = await axios.get(URL, {
-        params: {
-          userName: "kowalski",
-          dateString: dateSelected.toISOString().substring(0, 10),
-        },
-      });
-      setEntries(result.data);
-    };
-    fetchEntries();
-  }, [dateSelected]);
-
+  let dateChosen = "";
+  const onDateSelected = (date) => {
+    dateChosen = date;
+  };
   return (
-    <div className="ui container" style={{ marginTop: "10px" }}>
-      <DatePicker
-        selected={dateSelected}
-        onChange={(date) => {
-          setDateSelected(date);
-        }}
-      />
-      <HomeTable entries={entries} />
+    <div>
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <Home DateSelected={onDateSelected} userName="kowalski" />
+              }
+            />
+            <Route
+              path="/AddEntry"
+              exact
+              element={<AddEntry userName="kowalski" date={dateChosen} />}
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 };
