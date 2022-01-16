@@ -1,6 +1,10 @@
 // const activityRoutes = require("./activites");
 // const entryRoutes = require("./entry");s
 const homeRoutes = require("./home");
+const codeListRoute = require("./codeList");
+const subCodeListRoute = require("./subCodeList");
+const addEntryRoute = require("./addEntry");
+const deleteEntryRoute = require("./deleteEntry");
 
 const appRouter = (app, fs) => {
   app.use(function (req, res, next) {
@@ -9,6 +13,10 @@ const appRouter = (app, fs) => {
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content-Type, Accept"
     );
+    res.header(
+      "Access-Control-Allow-Methods",
+      "PUT, GET, POST, DELETE, OPTIONS"
+    );
     next();
   });
 
@@ -16,9 +24,11 @@ const appRouter = (app, fs) => {
     res.send("TRS");
   });
 
-  //   activityRoutes(app, fs);
-  //   entryRoutes(app, fs);
   homeRoutes(app, fs);
+  codeListRoute(app, fs);
+  subCodeListRoute(app, fs);
+  addEntryRoute(app, fs);
+  deleteEntryRoute(app, fs);
 };
 
 module.exports = appRouter;

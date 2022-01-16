@@ -11,6 +11,7 @@ const homeRoutes = (app, fs) => {
     fs.readdirSync(dataPath).forEach((user) => {
       if (user === userName) {
         fs.readdirSync(dataPath + `/${user}`).forEach((file) => {
+          console.log("debug 0");
           if (
             file.substring(file.length - 12, file.length - 5) ===
             date.substring(0, 7)
@@ -23,7 +24,6 @@ const homeRoutes = (app, fs) => {
               jsonFileData.entries.forEach((entry) => {
                 if (entry.date === date) {
                   entriesToReturn.push(entry);
-                  console.log(entriesToReturn);
                 }
               });
               res.send(entriesToReturn);
@@ -33,7 +33,6 @@ const homeRoutes = (app, fs) => {
         });
       }
     });
-    res.send(entriesToReturn);
   });
 };
 
