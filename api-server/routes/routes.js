@@ -6,6 +6,7 @@ const subCodeListRoute = require("./subCodeList");
 const addEntryRoute = require("./addEntry");
 const editEntryRoute = require("./editEntry");
 const deleteEntryRoute = require("./deleteEntry");
+const addActivityRoute = require("./addActivity");
 
 const appRouter = (app, fs) => {
   app.use(function (req, res, next) {
@@ -31,6 +32,7 @@ const appRouter = (app, fs) => {
   addEntryRoute(app, fs);
   editEntryRoute(app, fs);
   deleteEntryRoute(app, fs);
+  addActivityRoute(app, fs);
 };
 
 module.exports = appRouter;

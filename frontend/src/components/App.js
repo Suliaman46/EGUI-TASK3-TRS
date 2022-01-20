@@ -9,6 +9,7 @@ import Header from "./Header";
 import Home from "./Home";
 import EditEntry from "./EditEntry";
 import Login from "./Login";
+import AddActivity from "./AddActivity";
 
 const URL = "http://localhost:3001/Home";
 
@@ -48,11 +49,7 @@ const App = () => {
                 <Home DateSelected={onDateSelected} userName={userName} />
               }
             />
-            <Route
-              path="/AddEntry"
-              exact
-              element={<AddEntry userName={userName} />}
-            />
+            <Route path="/AddEntry" exact element={<AddEntry />} />
             <Route
               path="/EditEntry"
               exact
@@ -60,6 +57,7 @@ const App = () => {
                 <EditEntry userName={userName.current} date={dateChosen} />
               }
             />
+            <Route path="/AddActivity" exact element={<AddActivity />} />
           </Routes>
         </div>
       </BrowserRouter>
