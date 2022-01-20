@@ -70,7 +70,7 @@ const HomeTable = ({ entries, userName }) => {
 
   return (
     <div>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="bg-white">
         <tbody id="section1" style={{ textAlign: "center" }}>
           <tr style={{ textAlign: "center" }} className="grouplabel  bg-dark ">
             <th colSpan="6" className="text-white">
