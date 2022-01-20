@@ -4,6 +4,7 @@ const homeRoutes = require("./home");
 const codeListRoute = require("./codeList");
 const subCodeListRoute = require("./subCodeList");
 const addEntryRoute = require("./addEntry");
+const editEntryRoute = require("./editEntry");
 const deleteEntryRoute = require("./deleteEntry");
 
 const appRouter = (app, fs) => {
@@ -28,6 +29,7 @@ const appRouter = (app, fs) => {
   codeListRoute(app, fs);
   subCodeListRoute(app, fs);
   addEntryRoute(app, fs);
+  editEntryRoute(app, fs);
   deleteEntryRoute(app, fs);
 };
 

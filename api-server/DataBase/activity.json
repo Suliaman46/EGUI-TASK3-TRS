@@ -15,6 +15,14 @@
             "budget": -1,
             "active": true,
             "subactivities":[]
+        },
+        {
+            "code": "TEST",
+            "manager": "Me",
+            "name": "something",
+            "budget": 100,
+            "active": true,
+            "subactivities":[{"code":"frontend"},{"code":"backend"}]
         }
     ]
 }

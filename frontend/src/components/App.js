@@ -7,6 +7,7 @@ import AddEntry from "./AddEntry";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
+import EditEntry from "./EditEntry";
 
 const URL = "http://localhost:3001/Home";
 
@@ -32,6 +33,11 @@ const App = () => {
               path="/AddEntry"
               exact
               element={<AddEntry userName="kowalski" date={dateChosen} />}
+            />
+            <Route
+              path="/EditEntry"
+              exact
+              element={<EditEntry userName="kowalski" date={dateChosen} />}
             />
           </Routes>
         </div>
