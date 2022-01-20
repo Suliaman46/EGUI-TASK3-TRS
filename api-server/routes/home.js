@@ -1,38 +1,23 @@
+const read = require("./helper/read");
+
 const homeRoutes = (app, fs) => {
   const dataPath = "./DataBase/Users";
 
   // Reading From User Monthly File
   app.get("/home", (req, res) => {
-    const entriesToReturn = [];
+    const getDailyEntriesHelper = (jsonFileData, params) => {
+      const entriesToReturn = [];
+      jsonFileData.entries.forEach((entry) => {
+        if (entry.date === params.params.date) {
+          entriesToReturn.push(entry);
+        }
+      });
+      res.send(entriesToReturn);
+    };
 
     const userName = req.query.userName;
     const date = req.query.dateString;
-
-    fs.readdirSync(dataPath).forEach((user) => {
-      if (user === userName) {
-        fs.readdirSync(dataPath + `/${user}`).forEach((file) => {
-          console.log("debug 0");
-          if (
-            file.substring(file.length - 12, file.length - 5) ===
-            date.substring(0, 7)
-          ) {
-            fs.readFile(dataPath + `/${user}/${file}`, "utf8", (err, data) => {
-              if (err) {
-                throw err;
-              }
-              jsonFileData = JSON.parse(data);
-              jsonFileData.entries.forEach((entry) => {
-                if (entry.date === date) {
-                  entriesToReturn.push(entry);
-                }
-              });
-              res.send(entriesToReturn);
-              return;
-            });
-          }
-        });
-      }
-    });
+    read(userName, { params: { date: date } }, getDailyEntriesHelper);
   });
 };
 
