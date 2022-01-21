@@ -8,12 +8,19 @@ import "./style.css";
 const URL = "http://localhost:3001/Home";
 
 const Home = ({ DateSelected }) => {
-  console.log(localStorage.getItem("userName"));
+  console.log("home  rendered");
   const userName = JSON.parse(localStorage.getItem("userName"));
   const [entries, setEntries] = useState([]);
   const [dateSelected, setDateSelected] = useState(new Date());
+  const [needRefresh, setNeedRefresh] = useState(false);
 
+  const OnNeedRefresh = () => {
+    console.log(" in OnNeedRefresh callback");
+    setNeedRefresh(!needRefresh);
+  };
   useEffect(() => {
+    console.log(" in Home UseEffect ");
+
     const fetchEntries = async () => {
       const result = await axios.get(URL, {
         params: {
@@ -25,7 +32,7 @@ const Home = ({ DateSelected }) => {
     };
     fetchEntries();
     DateSelected(dateSelected);
-  }, [dateSelected]);
+  }, [dateSelected, needRefresh]);
   return (
     <section className="vh-100 gradient-custom">
       <div className="container py-5 h-100">
@@ -40,7 +47,11 @@ const Home = ({ DateSelected }) => {
 
         <div className="pt-2">
           <div className="card-body px-5 py-3 text-center ">
-            <HomeTable entries={entries} userName={userName} />
+            <HomeTable
+              entries={entries}
+              userName={userName}
+              OnNeedRefresh={OnNeedRefresh}
+            />
           </div>
         </div>
       </div>

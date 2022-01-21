@@ -3,22 +3,34 @@ import { Form, Field } from "react-final-form";
 import BootForm from "react-bootstrap/Form";
 import useCodes from "../hooks/useCodes";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const required = (value) => (value ? undefined : "Required");
-const composeValidators =
-  (...validators) =>
-  (value) =>
-    validators.reduce(
-      (error, validator) => error || validator(value),
-      undefined
-    );
 const AddActivity = () => {
   const [codeList, fetchCodeList] = useCodes();
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    console.log(values);
+    var subCodeArray = values.subCode.split(",");
+    values.subCode = subCodeArray;
+    var toSend = {};
+    toSend["activityDetails"] = values;
+    const result = await axios.post(
+      "http://localhost:3001/addactivity",
+      toSend
+    );
+    navigate("/Home");
   };
+
+  const required = (value) => (value ? undefined : "Required");
+  const unique = (value) =>
+    codeList.includes(value) ? "Must be Unique" : undefined;
+  const composeValidators =
+    (...validators) =>
+    (value) =>
+      validators.reduce(
+        (error, validator) => error || validator(value),
+        undefined
+      );
   let formData = {};
   return (
     <section className="vh-100 gradient-custom">
@@ -39,7 +51,10 @@ const AddActivity = () => {
                         <BootForm.Label className="fw-bold fs-5">
                           Code
                         </BootForm.Label>
-                        <Field name="code" validate={required}>
+                        <Field
+                          name="code"
+                          validate={composeValidators(required, unique)}
+                        >
                           {(props) => (
                             <div>
                               <BootForm.Control
@@ -155,9 +170,9 @@ const AddActivity = () => {
                         </button>
                         <button
                           className="btn-lg btn-warning mx-3"
-                          type="back"
+                          type="button"
                           onClick={() => {
-                            navigate("/");
+                            navigate("/Home");
                           }}
                         >
                           Cancel

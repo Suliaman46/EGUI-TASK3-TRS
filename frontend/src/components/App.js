@@ -15,19 +15,12 @@ const URL = "http://localhost:3001/Home";
 
 const App = () => {
   const [userName, setUserName] = useState("");
-  console.log(userName, "username in app");
 
   let dateChosen = "";
   const onDateSelected = (date) => {
     dateChosen = date;
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("userName", JSON.stringify(userName));
-  // }, [userName]);
-  // const betaSet = (name) => {
-  //   setUserName(name);
-  // };
   return (
     <div>
       <BrowserRouter>

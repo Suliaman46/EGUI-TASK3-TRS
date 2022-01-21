@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
-const HomeTable = ({ entries, userName }) => {
-  const [needRefresh, setNeedRefresh] = useState(false);
+const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
+  console.log("Home Table rendered");
+  // const [needRefresh, setNeedRefresh] = useState(false);
   const navigate = useNavigate();
 
   const onDeleteClicked = async (id) => {
@@ -12,11 +13,10 @@ const HomeTable = ({ entries, userName }) => {
     payload["userName"] = userName;
     payload["date"] = new Date().toISOString().substring(0, 10);
     payload["id"] = id;
-    console.log(payload);
     const result = await axios.delete("http://localhost:3001/Home", {
       data: payload,
     });
-    setNeedRefresh(!needRefresh);
+    OnNeedRefresh();
   };
 
   let num = 0;

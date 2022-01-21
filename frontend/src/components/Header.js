@@ -20,14 +20,22 @@ const Header = () => {
           >
             Add Entry
           </Nav.Link>
+          <Nav.Link
+            href="/AddActivity"
+            className="text-white "
+            style={{ fontWeight: "bold" }}
+          >
+            Add Activity
+          </Nav.Link>
         </Nav>
+
         <Nav className="ms-auto">
           <Nav.Link
             href="/Login"
             className="text-white"
             style={{ fontWeight: "bold" }}
           >
-            Login
+            Sign Out
           </Nav.Link>
         </Nav>
       </Container>

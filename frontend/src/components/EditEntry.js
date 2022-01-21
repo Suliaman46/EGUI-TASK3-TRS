@@ -112,9 +112,9 @@ const EditEntry = () => {
                         </button>
                         <button
                           className="btn-lg btn-warning mx-3"
-                          type="back"
+                          type="button"
                           onClick={() => {
-                            navigate("/");
+                            navigate("/Home");
                           }}
                         >
                           Cancel

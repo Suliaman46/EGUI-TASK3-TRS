@@ -11,7 +11,6 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const AddEntry = () => {
   const userName = JSON.parse(localStorage.getItem("userName"));
-  // console.log(props.userName, "user name in start of addentry");
   const [codeList, fetchCodeList] = useCodes();
   const [codeSelected, SetCodeSelected] = useState("");
   const [subCodeList, fetchSubCodeList] = useSubCodes(codeSelected);
@@ -122,9 +121,9 @@ const AddEntry = () => {
                         </button>
                         <button
                           className="btn-lg btn-warning mx-3"
-                          type="back"
+                          type="button"
                           onClick={() => {
-                            navigate("/");
+                            navigate("/Home");
                           }}
                         >
                           Cancel
