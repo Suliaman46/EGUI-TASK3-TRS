@@ -7,7 +7,6 @@ const addActivityRoute = (app, fs) => {
   // Reading From User Monthly File
   app.post("/addactivity", (req, res) => {
     const { activityDetails } = req.body;
-    console.log(activityDetails, "from addactivity");
     fs.readFile(dataPath, "utf8", (err, data) => {
       if (err) {
         throw err;

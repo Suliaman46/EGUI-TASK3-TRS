@@ -4,8 +4,6 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
 const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
-  console.log("Home Table rendered");
-  // const [needRefresh, setNeedRefresh] = useState(false);
   const navigate = useNavigate();
 
   const onDeleteClicked = async (id) => {
@@ -13,7 +11,7 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
     payload["userName"] = userName;
     payload["date"] = new Date().toISOString().substring(0, 10);
     payload["id"] = id;
-    const result = await axios.delete("http://localhost:3001/Home", {
+    await axios.delete("http://localhost:3001/Home", {
       data: payload,
     });
     OnNeedRefresh();
@@ -34,7 +32,7 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
             <div className="btn-group" role="group">
               <button
                 type="button"
-                className="btn btn-warning"
+                className="btn btn-dark btn-outline-warning  "
                 type="button"
                 onClick={() => {
                   navigate("/EditEntry", {
@@ -54,7 +52,7 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
               </button>
               <button
                 type="button"
-                className="btn btn-danger"
+                className="btn btn-dark btn-outline-danger"
                 onClick={() => {
                   onDeleteClicked(id);
                 }}
@@ -70,7 +68,7 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
 
   return (
     <div>
-      <Table striped bordered hover className="bg-white">
+      <Table striped bordered hover className="table-dark">
         <tbody id="section1" style={{ textAlign: "center" }}>
           <tr style={{ textAlign: "center" }} className="grouplabel  bg-dark ">
             <th colSpan="6" className="text-white">

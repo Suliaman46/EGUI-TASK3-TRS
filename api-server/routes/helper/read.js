@@ -1,15 +1,11 @@
 var fs = require("fs");
 
 const read = (userName, params, callback) => {
-  console.log(params);
   const dataPath = "./DataBase/Users";
   const date = params.params.date;
   var userFound = false;
-  console.log(userName, "arg userName");
   fs.readdirSync(dataPath).forEach((user) => {
-    console.log(user);
     if (user === userName) {
-      console.log("user matched");
       userFound = true;
       fs.readdirSync(dataPath + `/${user}`).forEach((file) => {
         if (
@@ -30,7 +26,6 @@ const read = (userName, params, callback) => {
     }
   });
   if (userFound == false) {
-    console.log(userFound, "val of userFOund");
     // IF USER IS NOT PRESENT
     fs.mkdirSync(`${dataPath}/${userName}`); // Creating folder for user
     fs.writeFileSync(

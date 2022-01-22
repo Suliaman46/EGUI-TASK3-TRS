@@ -27,8 +27,7 @@ const EditEntry = () => {
     values["id"] = entryID;
     toSend["entryDetails"] = values;
     toSend["userName"] = userName;
-    console.log(toSend);
-    const result = await axios.put("http://localhost:3001/editentry", toSend);
+    await axios.put("http://localhost:3001/editentry", toSend);
     navigate("/");
   };
 

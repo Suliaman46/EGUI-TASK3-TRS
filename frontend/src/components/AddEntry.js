@@ -21,9 +21,7 @@ const AddEntry = () => {
     values["date"] = new Date().toISOString().substring(0, 10);
     toSend["entryDetails"] = values;
     toSend["userName"] = userName;
-    console.log(toSend);
-    const result = await axios.post("http://localhost:3001/addentry", toSend);
-    console.log(result);
+    await axios.post("http://localhost:3001/addentry", toSend);
     navigate("/Home");
   };
   const renderedCodes = codeList.map((code) => {
@@ -114,7 +112,7 @@ const AddEntry = () => {
                       </BootForm.Group>
                       <div className="col-md-12 text-center">
                         <button
-                          className="btn-lg btn-primary mx-3"
+                          className="btn-lg btn-primary  mx-3"
                           type="submit"
                         >
                           Submit

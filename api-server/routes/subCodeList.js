@@ -5,7 +5,6 @@ const subCodeListRoute = (app, fs) => {
   app.get("/subcodelist", (req, res) => {
     const subActivities = [];
     const code = req.query.code;
-    console.log(code);
     fs.readFile(dataPath + `/activity.json`, "utf8", (err, data) => {
       if (err) {
         throw err;

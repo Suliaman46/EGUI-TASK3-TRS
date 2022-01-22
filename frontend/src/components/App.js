@@ -16,10 +16,10 @@ const URL = "http://localhost:3001/Home";
 const App = () => {
   const [userName, setUserName] = useState("");
 
-  let dateChosen = "";
-  const onDateSelected = (date) => {
-    dateChosen = date;
-  };
+  // let dateChosen = "";
+  // const onDateSelected = (date) => {
+  //   dateChosen = date;
+  // };
 
   return (
     <div>
@@ -35,20 +35,12 @@ const App = () => {
             />
             <Route path="/" exact element={<Login setName={setUserName} />} />
 
-            <Route
-              path="/Home"
-              exact
-              element={
-                <Home DateSelected={onDateSelected} userName={userName} />
-              }
-            />
+            <Route path="/Home" exact element={<Home userName={userName} />} />
             <Route path="/AddEntry" exact element={<AddEntry />} />
             <Route
               path="/EditEntry"
               exact
-              element={
-                <EditEntry userName={userName.current} date={dateChosen} />
-              }
+              element={<EditEntry userName={userName.current} />}
             />
             <Route path="/AddActivity" exact element={<AddActivity />} />
           </Routes>

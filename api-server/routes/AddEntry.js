@@ -27,7 +27,6 @@ const addEntryRoute = (app, fs) => {
     };
 
     const { userName, entryDetails } = req.body;
-    console.log(userName, "username in addentryruote");
     const date = entryDetails.date;
 
     read(
