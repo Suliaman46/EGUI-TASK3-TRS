@@ -13,7 +13,9 @@ const useSubCodes = (codeSelected) => {
     SetSubCodeList(result.data);
   };
   useEffect(() => {
-    fetchSubCodeList(codeSelected);
+    if (codeSelected) {
+      fetchSubCodeList(codeSelected);
+    }
   }, [codeSelected]);
 
   return [subCodeList, fetchSubCodeList];

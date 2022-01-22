@@ -1,8 +1,9 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap/";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   if (location.pathname === "/Login" || location.pathname === "/") {
     return null;
@@ -10,7 +11,7 @@ const Header = () => {
   return (
     <Navbar bg="black">
       <Container className="col-md-12">
-        <Navbar.Brand
+        {/* <Navbar.Brand
           href="/Home"
           className="text-white "
           style={{ fontWeight: "bold" }}
@@ -49,6 +50,67 @@ const Header = () => {
           >
             Sign Out
           </Nav.Link>
+        </Nav> */}
+        <a
+          href="#0"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/Home");
+          }}
+          className="text-white navbar-brand"
+          style={{ fontWeight: "bold", cursor: "pointer" }}
+        >
+          Home
+        </a>
+        <Nav className="me-auto">
+          <a
+            href="#0"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/AddEntry");
+            }}
+            className="text-white nav-link"
+            style={{ fontWeight: "bold", cursor: "pointer" }}
+          >
+            Add Entry
+          </a>
+          <a
+            href="#0"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/AddActivity");
+            }}
+            className="text-white nav-link"
+            style={{ fontWeight: "bold", cursor: "pointer" }}
+          >
+            Add Activity
+          </a>
+        </Nav>
+
+        <Nav className="ms-auto">
+          <a
+            href="#0"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/MonthlyReport");
+            }}
+            className="text-white nav-link"
+            style={{ fontWeight: "bold", cursor: "pointer" }}
+          >
+            Monthly Report
+          </a>
+
+          <a
+            href="#0"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/Login");
+            }}
+            className="text-white nav-link"
+            style={{ fontWeight: "bold", cursor: "pointer" }}
+          >
+            Sign Out
+          </a>
         </Nav>
       </Container>
     </Navbar>

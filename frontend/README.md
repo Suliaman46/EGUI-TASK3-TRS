@@ -1,14 +1,12 @@
-# EGUI LAB3  
-Time Reporting System  in React
+# EGUI LAB3
+
+Time Reporting System in React
+
 ## Available Scripts
 
-In the project directory, you can run:
+In this directory, run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the Frontend of application.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-
-
