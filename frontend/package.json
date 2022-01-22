@@ -9,6 +9,7 @@
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "final-form": "^4.20.4",
+    "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.0",
     "react-datepicker": "^4.6.0",

@@ -13,3 +13,5 @@ const routes = require("./routes/routes")(app, fs);
 const server = app.listen(3001, () => {
   console.log("listening on port %s...", server.address().port);
 });
+
+app.use(express.static("DataBase"));

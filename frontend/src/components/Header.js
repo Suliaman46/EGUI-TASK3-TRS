@@ -1,7 +1,12 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap/";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+  const location = useLocation();
+  if (location.pathname === "/Login" || location.pathname === "/") {
+    return null;
+  }
   return (
     <Navbar bg="black">
       <Container className="col-md-12">
@@ -30,6 +35,13 @@ const Header = () => {
         </Nav>
 
         <Nav className="ms-auto">
+          <Nav.Link
+            href="/MonthlyReport"
+            className="text-white"
+            style={{ fontWeight: "bold" }}
+          >
+            Monthly Report
+          </Nav.Link>
           <Nav.Link
             href="/Login"
             className="text-white"

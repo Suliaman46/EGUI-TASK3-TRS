@@ -1,13 +1,11 @@
 import { React, useState, useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BootForm from "react-bootstrap/Form";
 import axios from "axios";
 import useCodes from "../hooks/useCodes";
 import useSubCodes from "../hooks/useSubCodes";
 import BootSelect from "./helper/BootstrapSelect";
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const AddEntry = () => {
   const userName = JSON.parse(localStorage.getItem("userName"));

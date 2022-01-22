@@ -10,14 +10,16 @@ const AddActivity = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
-    var subCodeArray = values.subCode.split(",");
-    values.subCode = subCodeArray;
+    var subCodeArray = values.subactivities.split(",");
     var toSend = {};
+    var subCodes = subCodeArray.map((code) => {
+      return { code: code };
+    });
+    values.subactivities = subCodes;
     toSend["activityDetails"] = values;
-    const result = await axios.post(
-      "http://localhost:3001/addactivity",
-      toSend
-    );
+    console.log(toSend);
+
+    await axios.post("http://localhost:3001/addactivity", toSend);
     navigate("/Home");
   };
 
@@ -150,7 +152,7 @@ const AddActivity = () => {
                         <BootForm.Label className="fw-bold fs-5">
                           Sub Codes
                         </BootForm.Label>
-                        <Field name="subCode" initialValue={""}>
+                        <Field name="subactivities" initialValue={""}>
                           {(props) => (
                             <BootForm.Control
                               type="text"

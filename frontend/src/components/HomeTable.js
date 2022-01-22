@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
 const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
@@ -17,10 +17,10 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
     OnNeedRefresh();
   };
 
-  let num = 0;
+  let totalTime = 0;
   const renderedTableContent = entries.map(
     ({ date, code, subCode, time, description, id }) => {
-      num = parseInt(time) + num;
+      totalTime = parseInt(time) + totalTime;
       return (
         <tr key={id}>
           <td>{date}</td>
@@ -33,7 +33,6 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
               <button
                 type="button"
                 className="btn btn-dark btn-outline-warning  "
-                type="button"
                 onClick={() => {
                   navigate("/EditEntry", {
                     state: {
@@ -90,11 +89,11 @@ const HomeTable = ({ entries, userName, OnNeedRefresh }) => {
         <tbody id="section3">
           <tr style={{ textAlign: "center" }} className="grouplabel  bg-dark ">
             <th colSpan={6} className="text-white">
-              Total Time Today :
+              Total Time :
             </th>
           </tr>
           <tr style={{ textAlign: "center" }}>
-            <th colSpan={6}>{num}</th>
+            <th colSpan={6}>{totalTime}</th>
           </tr>
         </tbody>
       </Table>

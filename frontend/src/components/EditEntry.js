@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BootForm from "react-bootstrap/Form";
 import useSubCodes from "../hooks/useSubCodes";
 import BootSelect from "./helper/BootstrapSelect";
@@ -28,7 +28,7 @@ const EditEntry = () => {
     toSend["entryDetails"] = values;
     toSend["userName"] = userName;
     await axios.put("http://localhost:3001/editentry", toSend);
-    navigate("/");
+    navigate("/Home");
   };
 
   useEffect(() => {}, []);

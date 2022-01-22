@@ -1,32 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
-import DatePicker from "react-datepicker";
+import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
-import HomeTable from "./HomeTable";
 import AddEntry from "./AddEntry";
-import { BrowserRouter, Route, Routes, useRoutes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./Header";
 import Home from "./Home";
 import EditEntry from "./EditEntry";
 import Login from "./Login";
 import AddActivity from "./AddActivity";
-
-const URL = "http://localhost:3001/Home";
+import MonthlyReport from "./MonthlyReport";
 
 const App = () => {
   const [userName, setUserName] = useState("");
-
-  // let dateChosen = "";
-  // const onDateSelected = (date) => {
-  //   dateChosen = date;
-  // };
 
   return (
     <div>
       <BrowserRouter>
         <div>
           <Header />
-
           <Routes>
             <Route
               path="/Login"
@@ -43,6 +33,7 @@ const App = () => {
               element={<EditEntry userName={userName.current} />}
             />
             <Route path="/AddActivity" exact element={<AddActivity />} />
+            <Route path="/MonthlyReport" exact element={<MonthlyReport />} />
           </Routes>
         </div>
       </BrowserRouter>
