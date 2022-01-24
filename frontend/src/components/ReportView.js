@@ -35,9 +35,20 @@ const ReportView = ({ isHome }) => {
         const result = await axios.get(
           `${URL_STATIC}/${userName}/${userName}-${dateSelected
             .toISOString()
-            .substring(0, 7)}.json`
+            .substring(0, 7)}.json`,
+          {
+            validateStatus: (status) => {
+              if (status === 404) {
+                console.log("Not Found");
+                setEntries([]);
+              }
+              return status < 404;
+            },
+          }
         );
-        setEntries(result.data.entries);
+        if (result.data.entries) {
+          setEntries(result.data.entries);
+        }
       }
     };
     fetchEntries();
